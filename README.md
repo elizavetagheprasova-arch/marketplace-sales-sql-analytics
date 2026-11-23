@@ -6,6 +6,10 @@
 
 ![Статус](https://img.shields.io/badge/Project-SQL%20Portfolio-blue) ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-336791) ![Supabase](https://img.shields.io/badge/Platform-Supabase-3ECF8E)
 
+## Резюме
+
+Системный аналитик (Junior) · Бизнес-аналитик: [PDF на русском](https://elizavetagheprasova-arch.github.io/marketplace-sales-sql-analytics/cv/CV_Cheprasova_Systems_Analyst_RU.pdf) · [PDF en français](https://elizavetagheprasova-arch.github.io/marketplace-sales-sql-analytics/cv/CV_Cheprasova_Systems_Analyst_FR.pdf)
+
 ## Другие интерактивные дашборды портфолио
 
 - [Управление запасами: ABC/XYZ](https://elizavetagheprasova-arch.github.io/marketplace-sales-sql-analytics/inventory.html) — 1 500 синтетических SKU, матрица ABC×XYZ, страховой запас, точка заказа, фильтры по категориям.
