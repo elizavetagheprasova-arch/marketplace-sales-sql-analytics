@@ -6,6 +6,12 @@
 
 ![Статус](https://img.shields.io/badge/Project-SQL%20Portfolio-blue) ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-336791) ![Supabase](https://img.shields.io/badge/Platform-Supabase-3ECF8E)
 
+## Другие интерактивные дашборды портфолио
+
+- [Управление запасами: ABC/XYZ](https://elizavetagheprasova-arch.github.io/marketplace-sales-sql-analytics/inventory.html) — 1 500 синтетических SKU, матрица ABC×XYZ, страховой запас, точка заказа, фильтры по категориям.
+- [Закупки в Китае: TCO и сценарии](https://elizavetagheprasova-arch.github.io/marketplace-sales-sql-analytics/procurement.html) — интерактивный расчёт заказа и сравнение прямой закупки с посредником, частичные реальные затраты и проверка полноты данных.
+- [Все кейсы портфолио](https://elizavetagheprasova-arch.github.io/marketplace-sales-sql-analytics/portfolio.html)
+
 ## Задача
 
 На основе учебных данных маркетплейса получить показатели, полезные для операционных и коммерческих решений:

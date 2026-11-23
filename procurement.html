@@ -1,0 +1,79 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Закупки в Китае: TCO и сценарии | Portfolio</title>
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#eaf0ff;background:#0b1220}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#20335a 0,#0b1220 42%);min-height:100vh}
+.wrap{max-width:1250px;margin:auto;padding:35px 28px 60px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.eyebrow{color:#83b4ff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}h1{font-size:clamp(26px,3vw,42px);margin:10px 0 6px;letter-spacing:-.04em}p{color:#9caec8;margin:0;line-height:1.55}
+.pill{background:#1c2c46;border:1px solid #354c6b;color:#bed4fa;border-radius:100px;padding:10px 15px;font-size:13px}
+nav.top{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px;font-size:13px}nav.top a{color:#83b4ff;text-decoration:none}nav.top a:hover{text-decoration:underline}nav.top a.cur{color:#eaf0ff;font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}.card,.panel{background:#131f33;border:1px solid #2b3b55;border-radius:17px;padding:22px}
+.kpi-label{color:#9bb0cb;font-size:13px}.kpi-value{font-size:clamp(22px,2.5vw,33px);font-weight:800;letter-spacing:-.035em;margin:12px 0 5px;white-space:nowrap;font-variant-numeric:tabular-nums}.kpi-foot{color:#7d94b2;font-size:12px}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.panel h2{font-size:18px;margin:0 0 7px}.panel .sub{font-size:12px;margin-bottom:20px}
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}.ctrl label{display:flex;flex-direction:column;gap:8px;font-size:13px;color:#9bb0cb}.ctrl label b{color:#eaf0ff;font-variant-numeric:tabular-nums}.ctrl .row{display:flex;justify-content:space-between}
+input[type=range]{width:100%;accent-color:#4388f8}
+button{cursor:pointer;border:1px solid #355074;color:#c6d9f8;background:#14223a;border-radius:10px;padding:9px 15px;font:inherit;font-size:13px;margin-top:18px}button:hover{border-color:#4f74a6}button:focus-visible,input:focus-visible{outline:2px solid #83b4ff;outline-offset:2px}
+.wf{display:flex;align-items:flex-end;gap:14px;height:220px;border-bottom:1px solid #2c3e59;padding-top:20px}.wf .col{flex:1;position:relative;height:100%}.wf .bar{position:absolute;left:12%;right:12%;border-radius:6px;transition:all .3s}.wf .v{position:absolute;left:0;right:0;text-align:center;font-size:12px;color:#dbe7fa;font-variant-numeric:tabular-nums}
+.wfl{display:flex;gap:14px;margin-top:8px}.wfl span{flex:1;text-align:center;font-size:12px;color:#91a9c8}
+.cmp{display:flex;flex-direction:column;gap:16px}.barrow{display:grid;grid-template-columns:120px 1fr 110px;gap:10px;align-items:center;font-size:13px}.track{height:16px;border-radius:6px;background:#253551;overflow:hidden;display:flex}.seg{height:100%;transition:width .3s}.number{text-align:right;color:#dbe7fa;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:18px;flex-wrap:wrap;color:#aabdd7;font-size:12px;margin-top:14px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}.chk{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #263750;padding-bottom:12px}.chk b{display:block;font-size:14px}.chk small{color:#8fa3bf;font-size:12px}.st{font-size:12px;font-weight:700;white-space:nowrap}
+.good{color:#69d7ba}.warn{color:#ffce82}.bad{color:#f59aa0}
+.note{margin-top:16px;background:#101d30;border-left:3px solid #5b9af5;border-radius:10px;padding:16px 20px;color:#b6c9e4;font-size:13px;line-height:1.65}.note strong{color:#fff}.footer{margin-top:23px;font-size:12px;color:#8297b5}
+@media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.wrap{padding:22px 14px}.card,.panel{padding:16px}.ctrl,.checks{grid-template-columns:1fr}.barrow{grid-template-columns:80px 1fr 90px}}
+</style></head><body><div class="wrap">
+<nav class="top" aria-label="Портфолио"><a href="./">SQL-аналитика продаж</a><a href="./inventory.html">Запасы ABC/XYZ</a><a class="cur" href="./procurement.html">Закупки в Китае</a><a href="./portfolio.html">Все кейсы</a></nav>
+<header><div><div class="eyebrow">Portfolio / Excel / TCO / 1688</div><h1>Закупки в Китае: TCO и сценарии</h1><p>Прямые поставки против посредников, расчёт заказа, структура затрат и полнота данных</p></div><span class="pill">● Сценарий — учебные цены и объёмы</span></header>
+<section class="kpis" id="kpis"></section>
+<section class="layout">
+<div class="panel"><h2>Параметры сценария</h2><p class="sub">Двигайте ползунки — расчёт обновится. Значения по умолчанию взяты из Excel-модели</p>
+<div class="ctrl">
+<label><span class="row">Годовой спрос, шт <b id="o-demand"></b></span><input id="demand" type="range" min="20000" max="200000" step="5000" value="100000"></label>
+<label><span class="row">На складе, шт <b id="o-stock"></b></span><input id="stock" type="range" min="0" max="60000" step="1000" value="20000"></label>
+<label><span class="row">Буфер количества <b id="o-buffer"></b></span><input id="buffer" type="range" min="0" max="20" step="1" value="10"></label>
+<label><span class="row">Резерв бюджета <b id="o-reserve"></b></span><input id="reserve" type="range" min="0" max="25" step="0.5" value="12.5"></label>
+<label><span class="row">Прямая цена с доставкой, ₽/шт <b id="o-direct"></b></span><input id="direct" type="range" min="10" max="60" step="1" value="29"></label>
+<label><span class="row">Цена посредника, ₽/шт <b id="o-mid"></b></span><input id="mid" type="range" min="10" max="80" step="1" value="42"></label>
+</div><button id="reset" type="button">Сбросить к значениям модели</button></div>
+<div class="panel"><h2>Расчёт заказа, шт</h2><p class="sub">Заказ = спрос × (1 + буфер) − остаток на складе</p><div class="wf" id="wf"></div><div class="wfl"><span>Годовой спрос</span><span id="bl">Буфер</span><span>На складе</span><span>К заказу</span></div></div>
+</section>
+<section class="layout">
+<div class="panel"><h2>Стоимость партии</h2><p class="sub">Прямая закупка с резервом против посредника, млн ₽</p><div class="cmp" id="cmp"></div>
+<div class="legend"><span><i class="dot" style="background:#4f8ef7"></i>Закупка</span><span><i class="dot" style="background:#f2b84b"></i>Резерв бюджета</span><span><i class="dot" style="background:#8a9bb5"></i>Посредник</span></div></div>
+<div class="panel"><h2>Известные затраты по двум импортам</h2><p class="sub">Частичные реальные данные из реестров, тыс ₽ · полный TCO не рассчитан</p>
+<div class="cmp"><div class="barrow"><span>Цветы</span><div class="track"><div class="seg" style="width:63%;background:#4f8ef7" title="Товар 239,4"></div><div class="seg" style="width:17.9%;background:#4fd1a5" title="Доставка 67,9"></div></div><span class="number">307,3</span></div>
+<div class="barrow"><span>Рубашки</span><div class="track"><div class="seg" style="width:50%;background:#4f8ef7" title="Товар 189,8"></div><div class="seg" style="width:1.1%;background:#f2b84b" title="Комиссия 4,3"></div></div><span class="number">194,2</span></div></div>
+<div class="legend"><span><i class="dot" style="background:#4f8ef7"></i>Товар</span><span><i class="dot" style="background:#4fd1a5"></i>Междунар. доставка</span><span><i class="dot" style="background:#f2b84b"></i>Комиссия</span></div>
+<p class="warn" style="margin-top:14px;font-size:13px">Итого известно: 501,5 тыс ₽. Цветы: 20 927,30 CNY × 11,4413 ₽/CNY = 239 435,52 ₽.</p></div>
+</section>
+<section class="panel" style="margin-top:16px"><h2>Проверка полноты данных для полного TCO</h2><p class="sub">Чего не хватает, чтобы заявлять фактическую экономию</p><div class="checks">
+<div class="chk"><div><b>Стоимость товара</b><small>сверить с заказом и оплатой</small></div><span class="st good">есть</span></div>
+<div class="chk"><div><b>Доставка по Китаю и РФ</b><small>проверить привязку и дубли</small></div><span class="st bad">не включена</span></div>
+<div class="chk"><div><b>Курс CNY</b><small>11,4413 ₽/CNY — предварительный, не курс оплаты</small></div><span class="st warn">предварительный</span></div>
+<div class="chk"><div><b>Таможня / НДС</b><small>нужен режим ввоза и документы</small></div><span class="st bad">нет данных</span></div>
+<div class="chk"><div><b>Международная доставка</b><small>есть по цветам, второй счёт не включён</small></div><span class="st warn">частично</span></div>
+<div class="chk"><div><b>Цены посредников</b><small>без сопоставимых SKU экономия не считается</small></div><span class="st bad">нет данных</span></div>
+</div></section>
+<div class="note"><strong>Методика.</strong> Стоимость прямой закупки = заказ × цена с доставкой; резерв бюджета = процент от прямой закупки на риски курса и логистики; экономия = стоимость у посредника − прямая закупка.<br><strong>Ограничения.</strong> Сценарий использует учебные цены и объёмы. Затраты по двум импортам — частичные данные, не аудированная отчётность; фактическая экономия против посредников не заявляется без сопоставимых счетов.</div>
+<p class="footer">Елизавета Чепрасова · учебный проект · <a style="color:#83b4ff" href="https://github.com/elizavetagheprasova-arch/marketplace-sales-sql-analytics">репозиторий</a></p>
+</div>
+<script>
+const $=id=>document.getElementById(id);const f=n=>Math.round(n).toLocaleString('ru-RU');const m=n=>(n/1e6).toFixed(2).replace('.',',');
+const defs={demand:100000,stock:20000,buffer:10,reserve:12.5,direct:29,mid:42};
+function calc(){
+ const d=+$('demand').value,s=+$('stock').value,b=+$('buffer').value/100,r=+$('reserve').value/100,p=+$('direct').value,q=+$('mid').value;
+ $('o-demand').textContent=f(d);$('o-stock').textContent=f(s);$('o-buffer').textContent=(b*100).toFixed(0)+' %';$('o-reserve').textContent=(r*100).toFixed(1).replace('.',',')+' %';$('o-direct').textContent=p;$('o-mid').textContent=q;
+ const buf=d*b,ord=Math.max(0,d+buf-s),dc=ord*p,mc=ord*q,sv=mc-dc,res=dc*r;
+ const sp=mc?sv/mc*100:0;
+ $('kpis').innerHTML=[['Прямая закупка',m(dc)+' млн ₽',f(ord)+' шт × '+p+' ₽ с доставкой',''],['У посредника',m(mc)+' млн ₽',f(ord)+' шт × '+q+' ₽',''],['Экономия сценария',sp.toFixed(0)+' %',m(sv)+' млн ₽',sv>=0?'class="good"':'class="bad"'],['Резерв бюджета',f(res/1000)+' тыс ₽',(r*100).toFixed(1).replace('.',',')+' % на курс и логистику','class="warn"']]
+  .map(k=>`<div class="card"><div class="kpi-label">${k[0]}</div><div class="kpi-value" ${k[3]}>${k[1]}</div><div class="kpi-foot">${k[2]}</div></div>`).join('');
+ const top=Math.max(d+buf,ord)*1.12;const pct=v=>v/top*100;
+ const cols=[[0,d,'#4f8ef7',f(d)],[d,buf,'#f2b84b',f(buf)],[d+buf-s,s,'#f07178','−'+f(s)],[0,ord,'#4fd1a5',f(ord)]];
+ $('wf').innerHTML=cols.map(([base,h,c,l])=>`<div class="col"><div class="bar" style="bottom:${pct(Math.max(0,base))}%;height:${pct(h)}%;background:${c}"></div><div class="v" style="bottom:calc(${pct(Math.max(0,base)+h)}% + 4px)">${l}</div></div>`).join('');
+ $('bl').textContent='Буфер +'+(b*100).toFixed(0)+' %';
+ const mx=Math.max(dc+res,mc)||1;
+ $('cmp').innerHTML=`<div class="barrow"><span>Прямая + резерв</span><div class="track"><div class="seg" style="width:${dc/mx*100}%;background:#4f8ef7"></div><div class="seg" style="width:${res/mx*100}%;background:#f2b84b"></div></div><span class="number">${m(dc+res)}</span></div><div class="barrow"><span>Посредник</span><div class="track"><div class="seg" style="width:${mc/mx*100}%;background:#8a9bb5"></div></div><span class="number">${m(mc)}</span></div>
+ <p style="font-size:13px">${sv-res>=0?'Даже с резервом прямая закупка дешевле на <b class="good">'+m(sv-res)+' млн ₽</b>.':'С учётом резерва прямая закупка дороже на <b class="bad">'+m(res-sv)+' млн ₽</b>.'}</p>`;
+}
+document.querySelectorAll('input[type=range]').forEach(i=>i.addEventListener('input',calc));
+$('reset').onclick=()=>{Object.entries(defs).forEach(([k,v])=>$(k).value=v);calc()};
+calc();
+</script></body></html>
