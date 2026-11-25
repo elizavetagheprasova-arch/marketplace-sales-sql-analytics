@@ -1,0 +1,8 @@
+{
+  "name": "shy-smoke-a5ad",
+  "compatibility_date": "2026-11-25",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  }
+}
